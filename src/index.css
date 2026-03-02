@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 25% 5%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 22% 8%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 22% 8%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 222 75% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 18% 12%;
+    --secondary-foreground: 210 15% 80%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 12% 55%;
+
+    --accent: 0 70% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 48%;
+    --destructive-foreground: 210 20% 95%;
+
+    --border: 220 15% 16%;
+    --input: 220 15% 16%;
+    --ring: 222 75% 50%;
+
+    --radius: 0.625rem;
+
+    --anthracite: 220 20% 7%;
+    --gold-line: 222 40% 30%;
+
+    --sidebar-background: 220 25% 4%;
+    --sidebar-foreground: 210 15% 80%;
+    --sidebar-primary: 222 75% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 14%;
+    --sidebar-accent-foreground: 210 15% 80%;
+    --sidebar-border: 220 15% 16%;
+    --sidebar-ring: 222 75% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  ::selection {
+    background: hsl(222 75% 50% / 0.3);
+    color: hsl(210 20% 95%);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/50 backdrop-blur-xl border border-border/40 rounded-xl;
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.03);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-500;
+  }
+
+  .glass-card-hover:hover {
+    @apply bg-card/70 border-primary/25;
+    box-shadow: 0 8px 40px -8px hsl(222 75% 50% / 0.15),
+      0 4px 24px -4px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .section-padding {
+    @apply py-28 px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(222 80% 60%), hsl(222 70% 45%), hsl(225 75% 55%));
+  }
+
+  .blue-gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(222 80% 62%), hsl(220 65% 48%), hsl(225 75% 58%));
+  }
+
+  .subtle-gradient-line {
+    @apply h-px;
+    background: linear-gradient(to right, transparent, hsl(222 75% 50% / 0.3), transparent);
+  }
+
+  .premium-divider {
+    @apply h-0.5 w-16;
+    background: linear-gradient(90deg, hsl(222 75% 50%), hsl(222 60% 40%));
+    border-radius: 999px;
+  }
+
+  .container-narrow {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .blue-border-glow {
+    position: relative;
+  }
+
+  .blue-border-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(222 75% 50% / 0.3), transparent, hsl(222 75% 50% / 0.15));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .blue-border-glow:hover::after {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Subtle shimmer animation for stat cards */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-on-hover:hover {
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Smooth entrance for sections */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
