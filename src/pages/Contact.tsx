@@ -37,13 +37,25 @@ const Contact = () => {
       toast({ title: lang === "fr" ? "Veuillez remplir tous les champs requis" : "Please fill all required fields", variant: "destructive" });
       return;
     }
-    toast({ title: lang === "fr" ? "Message envoye avec succes" : "Message sent successfully" });
+
+    const subject = encodeURIComponent(`[Contact] ${form.service} - ${form.name}`);
+    const body = encodeURIComponent(
+      `Nom: ${form.name}\n` +
+      `Entreprise: ${form.company || "N/A"}\n` +
+      `Email: ${form.email}\n` +
+      `Téléphone: ${form.phone || "N/A"}\n` +
+      `Service: ${form.service}\n\n` +
+      `Message:\n${form.message}`
+    );
+
+    window.location.href = `mailto:contact@activaacapitalgroup.eu?subject=${subject}&body=${body}`;
+    toast({ title: lang === "fr" ? "Ouverture de votre client email..." : "Opening your email client..." });
     setForm({ name: "", company: "", email: "", phone: "", service: "", message: "" });
   };
 
   const emails = [
-    "infos@activacapitalgroup.eu",
-    "contact@activacapitalgroup.eu",
+    "infos@activaacapitalgroup.eu",
+    "contact@activaacapitalgroup.eu",
   ];
 
   const inputClassName = "w-full bg-secondary/40 border border-border/40 rounded-lg px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-300";
@@ -194,7 +206,7 @@ const Contact = () => {
                       <a
                         key={email}
                         href={`mailto:${email}`}
-                        className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+                        className="block text-sm text-muted-foreground hover:text-primary transition-colors duration-300 break-all"
                       >
                         {email}
                       </a>

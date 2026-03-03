@@ -20,7 +20,7 @@ const Footer = () => {
               +33 7 71 49 03 71
             </p>
             <p className="text-sm text-muted-foreground mt-1">
-              contact@activacapitalgroup.eu
+              contact@activaacapitalgroup.eu
             </p>
           </div>
           <div>

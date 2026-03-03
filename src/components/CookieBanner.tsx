@@ -19,11 +19,11 @@ const CookieBanner = () => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4">
-      <div className="container-narrow glass-card p-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-primary/15">
-        <p className="text-sm text-muted-foreground text-center sm:text-left">
+      <div className="container-narrow glass-card p-4 sm:p-6 flex flex-col items-center gap-3 sm:gap-4 sm:flex-row sm:justify-between border-primary/15">
+        <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
           {t("cookie.text")}
         </p>
-        <div className="flex gap-2 shrink-0">
+        <div className="flex flex-wrap justify-center gap-2 shrink-0">
           <button
             onClick={() => handleConsent("rejected")}
             className="text-xs font-medium px-4 py-2.5 border border-border/50 rounded-lg text-muted-foreground hover:text-foreground hover:border-border transition-all duration-300"

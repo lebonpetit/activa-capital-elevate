@@ -51,7 +51,7 @@ const TrackRecordSection = () => {
           <p className="text-muted-foreground text-lg">{t("track.subtitle")}</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {stats.map((stat, i) => (
             <TrackCard key={i} {...stat} inView={inView} delay={i * 0.15} />
           ))}
@@ -74,12 +74,12 @@ const TrackCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="glass-card p-8 sm:p-10 text-center group hover:border-primary/20 transition-all duration-500 hover:-translate-y-1"
+      className="glass-card p-4 sm:p-8 md:p-10 text-center group hover:border-primary/20 transition-all duration-500 hover:-translate-y-1"
     >
-      <p className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold blue-gradient-text mb-3">
+      <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold blue-gradient-text mb-2 sm:mb-3">
         {prefix}{target === 12 ? (count / 10).toFixed(1) : count}{suffix}
       </p>
-      <p className="text-xs sm:text-sm text-muted-foreground uppercase tracking-[0.15em] font-medium">
+      <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground uppercase tracking-[0.1em] sm:tracking-[0.15em] font-medium">
         {label}
       </p>
     </motion.div>
